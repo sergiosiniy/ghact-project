@@ -40,7 +40,7 @@ jobs:
     - name: Build and Push Docker image
       uses: mr-smithers-excellent/docker-build-push@v6
         with:
-          image: sergiosiniy/tutorials:java1.0
+          image: sergiosiniy/tutorials
           registry: docker.io
           username: ${{ secrets.DOCKER_USERNAME }}
           password: ${{ secrets.DOCKER_PASSWORD }}
