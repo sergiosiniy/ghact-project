@@ -36,15 +36,21 @@ jobs:
       run: chmod +x gradlew
     - name: Build with Gradle Wrapper
       run: ./gradlew build
+      
   dockerize:
     needs: build
-    - name: Build and Push Docker image
-      uses: mr-smithers-excellent/docker-build-push@v6
-      with:
-        image: sergiosiniy/tutorials
-        registry: docker.io
-        username: ${{ secrets.DOCKER_USERNAME }}
-        password: ${{ secrets.DOCKER_PASSWORD }}
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+
+    steps:
+      
+      - uses: mr-smithers-excellent/docker-build-push@v6
+        with:
+          image: sergiosiniy/tutorials
+          registry: docker.io
+          username: ${{ secrets.DOCKER_USERNAME }}
+          password: ${{ secrets.DOCKER_PASSWORD }}
 
     # NOTE: The Gradle Wrapper is the default and recommended way to run Gradle (https://docs.gradle.org/current/userguide/gradle_wrapper.html).
     # If your project does not have the Gradle Wrapper configured, you can use the following configuration to run Gradle with a specified version.
