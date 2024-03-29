@@ -2,9 +2,7 @@ FROM openjdk:8-jre-alpine
 
 EXPOSE 8080
 
-USER 0
-RUN mkdir -p /usr/app
-COPY ./build/libs/my-app-1.0-SNAPSHOT.jar /usr/app/
+COPY ./build/libs/java-app-1.0-SNAPSHOT.jar /usr/app/
 WORKDIR /usr/app
 
-ENTRYPOINT ["java", "-jar", "my-app-1.0-SNAPSHOT.jar"]
+ENTRYPOINT ["java", "-jar", "java-app-1.0-SNAPSHOT.jar"]
